@@ -1,4 +1,12 @@
+# Wi-Q JavaScript Exercise
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Prerequisites
+
+- Node
+- NPM
+- Yarn (optional)
 
 ## Getting Started
 
@@ -12,23 +20,23 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
+## NextJS
 
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Tasks
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Click into one of the available menus. Note that no products load, this is due to an error from the API.
+Ideally we would want to handle an error like this with a friendly error message. **Hint: You may need to check the
+documentation for the data fetching library we are using to see how it handles errors.**
+- Once the page handles this error you can remove the `throw new Error` line from `api/menu/[id].ts` file.
+- Note that when you add products to the basket, they are added multiple times instead of the quantity updating.
+Collate the items in the basket so that when the same item is added twice, its quantity is updated, and when the last
+item is removed, it is removed completely.
+  - Are there any units you could break out of this piece of work to independently unit test?
+- You'll notice that every menu has the same set of menu items. That's because the response from this API endpoint
+is hardcoded and not dependent on the page route. Check out the files `/pages/api/menu/[id].ts` and `/pages/api/menu/data.json`.
+Update the `[id].ts` file so that when `/menu/[id]` is requested, we return with the correct set of products from `data.json`.
+**Hint: you might want to check the docs for Next.js to see how API routes can vary on path parameters.**
